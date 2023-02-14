@@ -1,13 +1,63 @@
-main {
-    /* background-color: #8EC5FC;
-    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%); */
+body {
     background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+}
+
+main {
     height: 100vh;
     width: 100vw;
 }
 
 #login-page {
     height: 90vh;
+}
+
+h1 {
+    color: rgb(250, 50, 87);
+    animation: titulo 4s;
+}
+
+@keyframes titulo {
+    0% {
+        font-size: 0rem;
+        color: white;
+    }
+
+    25% {
+        font-size: 1rem;
+        color: rgb(252, 225, 230);
+    }
+
+    50% {
+        font-size: 1.5rem;
+        color: rgb(248, 190, 201);
+    }
+
+    75% {
+        font-size: 2rem;
+        color: rgb(255, 116, 142);
+    }
+
+    100%{
+        font-size: 2.5rem;
+        color: rgb(250, 50, 87);
+    }
+}
+
+
+#card-login {
+    animation: aparece 1s;
+}
+
+@keyframes aparece {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .btn-entrar {
@@ -22,8 +72,16 @@ main {
     bottom: 40px;
 }
 
+#btn-sair {
+    position: fixed;
+    right: 30px;
+    top: 15px;
+}
+
+
 .toast-position {
     position: fixed;
-    right: 40px;
+    right: 20px;
     top: 20px;
 }
+

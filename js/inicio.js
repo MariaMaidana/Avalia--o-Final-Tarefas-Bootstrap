@@ -1,7 +1,7 @@
 const listaUsers = buscarDadosLocalStorage('usuarios');
 const formularioEntrar = document.getElementById('form-entrar');
-const toastDiv = document.getElementById('toast-app');
-const toastBS = new bootstrap.Toast(toastDiv);
+const toastLogin = document.getElementById('toast-app');
+const toastBS = new bootstrap.Toast(toastLogin);
 
 
 formularioEntrar.addEventListener('submit', (evento) => {
@@ -27,6 +27,23 @@ formularioEntrar.addEventListener('submit', (evento) => {
 })
 
 
+function mostrarAlerta(tipo, mensagem) {
+
+    toastLogin.classList.add(`text-bg-${tipo}`)
+
+    const espacoMensagem = document.getElementById('espaco-mensagem')
+    espacoMensagem.innerHTML = mensagem
+
+    toastBS.show()
+
+    setTimeout(() => {
+        toastBS.hide()
+
+        toastLogin.classList.remove(`text-bg-${tipo}`)
+    }, 5000)
+
+}
+
 
 function guardarLocalStorage(chave, valor) {
     const valorJSON = JSON.stringify(valor);
@@ -47,19 +64,3 @@ function buscarDadosLocalStorage(chave) {
     }
 }
 
-function mostrarAlerta(tipo, mensagem) {
-
-    toastDiv.classList.add(`text-bg-${tipo}`)
-
-    const espacoMensagem = document.getElementById('espaco-mensagem')
-    espacoMensagem.innerHTML = mensagem
-
-    toastBS.show()
-
-    setTimeout(() => {
-        toastBS.hide()
-
-        toastDiv.classList.remove(`text-bg-${tipo}`)
-    }, 5000)
-
-}

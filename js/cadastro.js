@@ -1,6 +1,6 @@
 const listaUsers = buscarDadosLocalStorage('usuarios');
-const toastDiv = document.getElementById('toast-app');
-const toastBS = new bootstrap.Toast(toastDiv);
+const toastCadastro = document.getElementById('toast-app');
+const toastBS = new bootstrap.Toast(toastCadastro);
 const formularioCadastro = document.getElementById('form-cadastro');
 
 formularioCadastro.addEventListener('submit', (evento) => {
@@ -43,9 +43,10 @@ formularioCadastro.addEventListener('submit', (evento) => {
 
     mostrarAlerta('success', 'Conta criada com sucesso!')
 
-    // TEM Q COISAR PRA APARECER PRIMEIRO O ALERTA E DPS MANDAR P LOGIN
-
-    window.location.href = './inicio.html'
+    setTimeout(() => {
+        window.location.href = './inicio.html'
+    }, 5000)
+    
 
     guardarLocalStorage('usuarios', listaUsers);
 
@@ -53,6 +54,22 @@ formularioCadastro.addEventListener('submit', (evento) => {
     
 })
 
+function mostrarAlerta(tipo, mensagem) {
+
+    toastCadastro.classList.add(`text-bg-${tipo}`)
+
+    const espacoMensagem = document.getElementById('espaco-mensagem')
+    espacoMensagem.innerHTML = mensagem
+
+    toastBS.show()
+
+    setTimeout(() => {
+        toastBS.hide()
+
+       toastCadastro.classList.remove(`text-bg-${tipo}`)
+    }, 4000)
+
+}
 
 
 function guardarLocalStorage(chave, valor) {
@@ -75,19 +92,3 @@ function buscarDadosLocalStorage(chave) {
 }
 
 
-function mostrarAlerta(tipo, mensagem) {
-
-    toastDiv.classList.add(`text-bg-${tipo}`)
-
-    const espacoMensagem = document.getElementById('espaco-mensagem')
-    espacoMensagem.innerHTML = mensagem
-
-    toastBS.show()
-
-    setTimeout(() => {
-        toastBS.hide()
-
-        toastDiv.classList.remove(`text-bg-${tipo}`)
-    }, 5000)
-
-}

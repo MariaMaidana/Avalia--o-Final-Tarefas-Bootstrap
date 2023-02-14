@@ -162,13 +162,13 @@ function mostrarModalAtualizar(indiceTarefa) {
 }
 
 function sairDaConta() {
-    salvarRecados()
+    salvarT()
     localStorage.removeItem("usuarioLogado")
     window.location.href = './inicio.html'
 }
 
 
-function salvarRecados() {
+function salvarT() {
     const listaUsers = buscarDadosStorage('usuarios')
 
     const acharUser = listaUsers.findIndex((valor) => valor.email === usuarioLogado.email)
